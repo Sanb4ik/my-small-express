@@ -12,6 +12,9 @@ router.get('/users',(req, res)=>{
 
 router.post('/users',(req, res)=>{
     //res.writeHead(200, {'Content-Type': 'application/json'});
+    console.log(req.body);
+    const user = req.body;
+    users.push(user);
     res.send(users)
 })
 
