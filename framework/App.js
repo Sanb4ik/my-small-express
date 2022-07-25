@@ -12,7 +12,7 @@ module.exports= class App{
             const endpoint = router.endpoints[path];
             Object.keys(endpoint).forEach((method) =>{
                 const handler = endpoint[method];
-                this.emitter.on(this._getRouteMask(path, handler),(req, res) =>{
+                this.emitter.on(this._getRouteMask(path, method),(req, res) =>{
                     handler(req, res)
                 })
             })
@@ -27,7 +27,7 @@ module.exports= class App{
         })
     }
     _getRouteMask(path, method){
-        return `[${path}]:${method}`;
+        return `[${path}]:[${method}]`;
     }
     listen(port,callback){
         this.server.listen(port,callback)
